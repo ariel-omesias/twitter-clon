@@ -1,0 +1,18 @@
+<div class="comienzaTuDia">
+    <h1 class=" titulo">Comienza tu día con un Tweet</h1>
+    <i class="fas fa-laugh-wink fa-3x ml-3"></i>
+</div>
+
+<div class="row col-8 mx-auto">
+<% if user_signed_in? %>
+    <%= render 'tweets/form', tweet: @tweet %>
+<% end %>
+
+    <% @tweets.each do |tweet| %>
+        <%= render 'tweets/single_tweet', tweet: tweet %>
+    <% end %>
+    <hr />
+
+    <%= link_to_next_page @tweets, 'Mostrar más', :class => "my-4 btn btn-primary float-right" %>
+
+</div>

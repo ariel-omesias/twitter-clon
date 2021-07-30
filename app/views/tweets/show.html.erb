@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= @tweet.user.username %> dice:</strong><br />
+  <i><%= @tweet.content %></i>
+</p>
+
+
+<h3>Likes (<%= @tweet.likes.count %>)</h3>
+<% @tweet.liking_users.each do |user| %>
+  <%= image_tag(user.avatar, class: "avatar-in-tweet rounded") %>
+<% end %>
+
+  <%= link_to 'Back', root_path %>

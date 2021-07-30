@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark  navTwitter">
+
+    <%= link_to "  <i class='fab fa-twitter fa-3x'></i>".html_safe, root_path, :class => 'navbar-brand ml-5' %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+                <li class="nav-item">
+                    <a class="nav-link"><%= current_user.username %></a>
+                </li>
+                <li class="nav-item">
+                    <%= link_to 'New Tweet', root_path, class: 'nav-link' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+                </li>
+            <% else %>
+            <li class="nav-item">
+                <%= link_to 'Registro', new_user_registration_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Login', new_user_session_path, class: 'nav-link' %>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+</nav>
