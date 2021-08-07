@@ -1,12 +1,22 @@
 <div class="comienzaTuDia">
-    <h1 class=" titulo">Comienza tu día con un Tweet</h1>
+    <h1 class=" titulo text-center">Comienza tu día con un Tweet</h1>
     <i class="fas fa-laugh-wink fa-3x ml-3"></i>
 </div>
 
 <div class="row col-8 mx-auto">
-<% if user_signed_in? %>
-    <%= render 'tweets/form', tweet: @tweet %>
-<% end %>
+
+<div class="w-100 mt-2">
+    <%= form_tag(root_path, method: :get) do %>
+        <div class="form-group">
+            <%= link_to 'Limpiar', root_path, :class => 'form-group ml-2 btn btn-secondary float-right' %>
+            <%= submit_tag("Buscar", :class => "ml-2 btn btn-primary text-white float-right") %>
+            <%= text_field_tag(:search, params[:search], :class => "w-50 float-right form-control d-inline") %>
+        </div>
+    <% end %>
+</div>
+    <% if user_signed_in? %>
+        <%= render 'tweets/form', tweet: @tweet %>
+    <% end %>
 
     <% @tweets.each do |tweet| %>
         <%= render 'tweets/single_tweet', tweet: tweet %>

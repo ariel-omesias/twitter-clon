@@ -21,7 +21,7 @@ body{
 }
 
 .avatar-in-tweet{
-    width: 200px;
+    width: 230px;
 }
 
 .navTwitter{
@@ -42,6 +42,8 @@ body{
 // Div de los tweet
 .divBorde{
     border-radius: 30px;
+    box-shadow: 10px 10px 10px rgb(176, 176, 176);
+    margin: 20px 20px;
 }
 
 .footer{

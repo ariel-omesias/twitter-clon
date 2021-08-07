@@ -3,11 +3,12 @@
         <%= link_to "<i class='fa fa-calendar'></i> ".html_safe+time_ago_in_words(tweet.created_at), tweet %>
     </div>
         <%= image_tag (tweet.user.avatar), :class => "avatar-in-tweet rounded-circle" %>
-        <%= tweet.content %>
+        <%= tweet.content.html_safe %>
     <div class="">
         <%= link_to "<i class='fas fa-#{tweet.like_icon(current_user)} text-danger'></i>".html_safe, tweet_likes_path(tweet), method: :post %>
         <%= tweet.likes.count %> 
     </div>
+
     <div class="float-right">
         <%= tweet.count_rt %>
         <%= link_to "<i class='fas fa-retweet text-#{tweet.retweet_color}'></i>".html_safe, tweet_retweet_path(tweet), method: :post %>
@@ -15,4 +16,12 @@
             <%= link_to "retweet...", tweet.tweet_ref %>
         <% end %>
     </div>
+
+    <% if user_signed_in? && current_user != tweet.user%>
+        <% if current_user.is_following?(tweet.user_id) %>
+            <%= link_to "<i class ='fas fa-user-times text-danger'></i>".html_safe, users_follow_path(tweet.user_id), method: :post %>
+        <% else %>
+            <%= link_to "<i class ='fa fa-user-plus' aria-hidden='true'></i>".html_safe, users_follow_path(tweet.user_id), method: :post %>
+        <% end %>
+    <% end %>
 </div>

@@ -10,8 +10,18 @@
                 <li class="nav-item">
                     <a class="nav-link"><%= current_user.username %></a>
                 </li>
+                <% if current_user.admin %>
+                <li class="nav-item">
+                    <%= link_to 'Admin', admin_root_path, class: 'nav-link' %>
+                </li>
+                <% end %>
+
                 <li class="nav-item">
                     <%= link_to 'New Tweet', root_path, class: 'nav-link' %>
+                </li>
+
+                <li class="nav-item">
+                    <%= link_to 'Explorar', all_tweets_path, class: 'nav-link' %>
                 </li>
                 <li class="nav-item">
                     <%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'nav-link' %>
